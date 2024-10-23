@@ -11,8 +11,56 @@ const Person = {
 ```
 
 ## Functions and Callback Handler
-In JavaScript you create Functions and Callback like this:
+A callback is a function that is passed to another function and called by that function. Often in JavaScript functions are called when another function is not finished. Callback functions ensure that the functions are called in the defined order. The "Pyramid of Doom" occurs due to nested callbacks, which create complex and hard-to-read code.
 ``` javascript
+
+function fetchData(callback) {
+  setTimeout(() => {
+    console.log("Data fetched");
+    callback();
+  }, 1000);
+}
+
+fetchData(() => {
+  console.log("Processing data");
+  fetchData(() => {
+    console.log("Saving data");
+    fetchData(() => {
+      console.log("Data saved");
+    });
+  });
+});
+
+```
+## Promises:
+Promises provide a better way to handle asynchronous code. They avoid the issue of nested callbacks.
+
+![Example from Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/promises.png)
+```javascript
+function fetchData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const success = true;
+      if (success) {
+        resolve("Data fetched successfully");
+      } else {
+        reject("Error fetching data");
+      }
+    }, 1000);
+  });
+}
+
+fetchData()
+  .then(data => {
+    console.log(data);
+    return "Processing data";
+  })
+  .then(processedData => {
+    console.log(processedData);
+  })
+  .catch(error => {
+    console.error(error);
+  });
 
 ```
 
