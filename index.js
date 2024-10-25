@@ -55,21 +55,21 @@ app.get("/openHrm", async (req,res) => {
 
 app.get("/openCRX", async (req,res) => {
   try {
-    const params = {
-      type: org.openmdx.base.Void,
-      UserName: 'guest',
-      password: 'guest'
-    };
+    const username = 'guest';
+    const password = 'guest';
 
-    const params2 = {
-      queryType: 'query'
-    }
+    // Encode the credentials to Base64
+    const auth = Buffer.from(`${username}:${password}`).toString('base64');
 
-    const auth = await axios.post('https://sepp-crm.inf.h-brs.de/opencrx-rest-CRX/org.opencrx.kernel.account1/provider/CRX/segment/Standard/account');
 
-    const response = await axios.get('http://localhost:8080/opencrx-rest-CRX/org.opencrx.kernel.account1/provider/CRX/segment/Standard/account');
+    const response = await axios.get('https://sepp-crm.inf.h-brs.de/opencrx-rest-CRX/org.opencrx.kernel.home1/provider/CRX/segment/Standard/userHome/guest/accessHistory', {
+      headers: {
+          'Accept': 'application/json',
+          'Authorization': `Basic ${auth}` 
+      }
+    });
 
-    res.json(auth.data)
+    res.json(response.data);
   }catch(error) {
     console.error('Error fetching data:', error);
     res.status(500).json({message: 'Error fetching data'});
