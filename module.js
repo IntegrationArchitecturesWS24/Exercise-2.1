@@ -1,5 +1,5 @@
 // Function to create the module with dynamic values
-const createSalesmanModule = (initialBaseSalary, initialBonusRate, initialSales = 0) => {
+export const createSalesmanModule = (initialBaseSalary, initialBonusRate, initialSales = 0) => {
     let sales = initialSales; // Total sales amount, set dynamically
     const baseSalary = initialBaseSalary; // Base salary
     const bonusRate = initialBonusRate; // Bonus rate

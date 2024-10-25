@@ -61,11 +61,15 @@ app.get("/openCRX", async (req,res) => {
       password: 'guest'
     };
 
-    const auth = await axios.post('http://localhost:3000/opencrx-rest-CRX/org.opencrx.kernel.account1/provider/CRX/segment/Standard/account', { params: params});
+    const params2 = {
+      queryType: 'query'
+    }
+
+    const auth = await axios.post('https://sepp-crm.inf.h-brs.de/opencrx-rest-CRX/org.opencrx.kernel.account1/provider/CRX/segment/Standard/account');
 
     const response = await axios.get('http://localhost:8080/opencrx-rest-CRX/org.opencrx.kernel.account1/provider/CRX/segment/Standard/account');
 
-    res.json(response.data)
+    res.json(auth.data)
   }catch(error) {
     console.error('Error fetching data:', error);
     res.status(500).json({message: 'Error fetching data'});
