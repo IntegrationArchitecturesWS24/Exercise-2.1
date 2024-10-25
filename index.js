@@ -28,18 +28,45 @@ app.get("/delete-cookies", (req, res) => {
 
 app.get("/openHrm", async (req,res) => {
   try {
-    const form
+    const form = new FormData();
 
+    form.append('client_id','api_oauth_id');
+    form.append('client_secret','oauth_secret');
+    form.append('grant_type','password');
+    form.append('username','demouser');
+    form.append('password','*Safb02da42Demo$');
 
-    const response = await axios.post('https://sepp-hrm.inf.h-brs.de/symfony/web/index.php/oauth/issueToken', 
-      {
-        Headers: {
-
-        }
-      });
+    const fetchToken = await axios.post('https://sepp-hrm.inf.h-brs.de/symfony/web/index.php/oauth/issueToken', form);
     
-    res.json(response.data)
+    const token = fetchToken.data.access_token;
+
+    const response = await axios.get('https://sepp-hrm.inf.h-brs.de/symfony/web/index.php/api/v1/employee/search', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    res.json(response.data);
   } catch(error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({message: 'Error fetching data'});
+  }
+}); 
+
+app.get("/openCRX", async (req,res) => {
+  try {
+    const params = {
+      type: org.openmdx.base.Void,
+      UserName: 'guest',
+      password: 'guest'
+    };
+
+    const auth = await axios.post('http://localhost:3000/opencrx-rest-CRX/org.opencrx.kernel.account1/provider/CRX/segment/Standard/account', { params: params});
+
+    const response = await axios.get('http://localhost:8080/opencrx-rest-CRX/org.opencrx.kernel.account1/provider/CRX/segment/Standard/account');
+
+    res.json(response.data)
+  }catch(error) {
     console.error('Error fetching data:', error);
     res.status(500).json({message: 'Error fetching data'});
   }
