@@ -39,3 +39,7 @@ const totalSalary = salesmanModule.calculateTotalSalary(target); // Calculate to
 
 console.log(`Total Sales: $${salesmanModule.getSales()}`); // Output current sales amount
 console.log(`Total Salary: $${totalSalary.toFixed(2)}`); // Output total income
+
+
+
+
