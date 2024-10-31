@@ -90,22 +90,12 @@ Promise resolved
 We see that the function example is called before the promise is resolved. The await statement waits for the promise to be resolved before continuing with the code of the function. The synchronous code is executed before the asynchronous code.
 
 
-```
-
-```
-
-
-
-```
 Asynchrony:It allows a program to initiate tasks without waiting for their completion, enabling the execution of other tasks simultaneously.
 Parallelism: It refers to the simultaneous execution of multiple tasks or processes, typically using multiple processors or cores.
 Concurrency(OR Multithreading): It refers to a program's ability to handle multiple tasks at the same time, which may not be executed simultaneously but can progress independently.
 
 Quellen:..............
 
-```
-
-```
 
 
 
