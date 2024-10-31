@@ -1,9 +1,14 @@
-const express = require('express');
-const axios = require('axios');
-var cookieParser = require('cookie-parser');
-const FormData = require('form-data');
+import express from 'express';
+import axios from 'axios';
+import cookieParser from 'cookie-parser';
+import FormData from 'form-data';
+
+import {
+  Company, bonusCalculation
+} from './modules/bonuscalculation.js';
 
 const app = express();
+app.use(express.json());
 app.use(cookieParser());
 
 const port = 3000;
@@ -75,6 +80,20 @@ app.get("/openCRX", async (req, res) => {
     res.status(500).json({ message: 'Error fetching data' });
   }
 });
+
+app.get("/bonus", async (req, res) => {
+  try {
+    var company = new Company(req.body.company.name, req.body.company.rating);
+    var items = req.body.items;
+    var bonus = bonusCalculation(company, items);
+    res.json({ company: company, bonus: bonus });
+  }
+  catch (error) {
+    console.error('Error calculating bonus:', error);
+    res.status(500).json({ message: 'Error calculating bonus' });
+  }
+});
+
 
 app.listen(port, () => {
   console.log(`App is listening on port ${port}.`);
