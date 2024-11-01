@@ -7,6 +7,18 @@ import {
   Company, bonusCalculation
 } from './modules/bonuscalculation.js';
 
+import { createSalesMan, 
+         deleteSalesMan,
+         readAllSalesMen,
+         readSalesMan, 
+         SalesMan, 
+         SocialPerformanceRecord, 
+         updateSalesMan, 
+         addSocialPerformanceRecord, 
+         readSocialPerformanceRecords, 
+         readSocialPerformanceRecord, 
+         deleteSocialPerformanceRecord } from './modules/managePersonal.js';
+
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
@@ -97,4 +109,132 @@ app.get("/bonus", async (req, res) => {
 
 app.listen(port, () => {
   console.log(`App is listening on port ${port}.`);
+});
+
+// Manage-Personal Rest Apis
+
+app.post("/createSalesMan", async (req, res) => {
+  try {
+    var actSalesMan = new SalesMan(req.body.sid,req.body.firstname,req.body.lastname);
+
+    var result = createSalesMan(actSalesMan);
+
+    res.json({result: result});
+  }catch(error) {
+    console.error('Error with fetching data:', error);
+    res.status(500).json({message: 'Error creating SalesMan'});
+    
+  }
+});
+
+app.post("/readSalesMan", async (req, res) => {
+  try {
+    var sid = req.body.sid
+
+    var result = readSalesMan(sid);
+
+    res.json({result: result});
+  }catch(error) {
+    console.error('Error with fetching data:', error);
+    res.status(500).json({message: 'Error reading SalesMan'});
+    
+  }
+});
+
+app.get("/readAllSalesMen", async (req, res) => {
+  try {
+    var result = readAllSalesMen();
+
+    res.json({result: result});
+  }catch(error) {
+    console.error('Error with fetching data:', error);
+    res.status(500).json({message: 'Error reading SalesMen'});
+    
+  }
+});
+
+app.post("/updateSalesMan", async (req, res) => {
+  try {
+    var actSalesMan = new SalesMan(req.body.sid,req.body.firstname,req.body.lastname);
+
+    var result = updateSalesMan(actSalesMan);
+
+    res.json({result: result});
+  }catch(error) {
+    console.error('Error with fetching data:', error);
+    res.status(500).json({message: 'Error updating SalesMan'});
+    
+  }
+});
+
+app.post("/deleteSalesMan", async (req, res) => {
+  try {
+    var actSalesMan = new SalesMan(req.body.sid,req.body.firstname,req.body.lastname);
+
+    var result = deleteSalesMan(actSalesMan);
+
+    res.json({result: result});
+  }catch(error) {
+    console.error('Error with fetching data:', error);
+    res.status(500).json({message: 'Error deleting SalesMan'});
+    
+  }
+});
+
+app.post("/addSocialPerformanceRecord", async (req, res) => {
+  try {
+    var actRecord = new SocialPerformanceRecord(req.body.gid,req.body.description,req.body.targetValue,req.body.actValue,req.body.year);
+    
+    var actSalesMan = new SalesMan(req.body.sid,req.body.firstname,req.body.lastname);
+
+    var result = addSocialPerformanceRecord(actSalesMan, actRecord);
+
+    res.json({result: result});
+  }catch(error) {
+    console.error('Error with fetching data:', error);
+    res.status(500).json({message: 'Error creating Record'});
+  }
+});
+
+app.post("/readSocialPerformanceRecords", async (req, res) => {
+  try {    
+    var actSalesMan = new SalesMan(req.body.sid,req.body.firstname,req.body.lastname);
+
+    actSalesMan.gids = req.body.gids;
+
+    var result = readSocialPerformanceRecords(actSalesMan);
+
+    res.json({result: result});
+  }catch(error) {
+    console.error('Error with fetching data:', error);
+    res.status(500).json({message: 'Error reading records'});
+  }
+});
+
+app.post("/readSocialPerformanceRecord", async (req, res) => {
+  try {    
+    var gid = req.body.gid
+
+    var result = readSocialPerformanceRecord(gid);
+
+    res.json({result: result});
+  }catch(error) {
+    console.error('Error with fetching data:', error);
+    res.status(500).json({message: 'Error reading record'});
+  }
+});
+
+app.post("/deleteSocialPerformanceRecord", async (req, res) => {
+  try {
+    var actRecord = new SocialPerformanceRecord(req.body.gid,req.body.description,req.body.targetValue,req.body.actValue,req.body.year);
+    
+    var actSalesMan = new SalesMan(req.body.sid,req.body.firstname,req.body.lastname);
+
+    var result = deleteSocialPerformanceRecord(actSalesMan, actRecord);
+
+    res.json({result: result});
+  }catch(error) {
+    console.error('Error with fetching data:', error);
+    res.status(500).json({message: 'Error deleting record'});
+  }
 });
