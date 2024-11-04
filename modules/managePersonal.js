@@ -73,7 +73,9 @@ export function updateSalesMan(updatedSalesman) {
     return false;
   }
 
-  Object.assign(foundSalesMan, updatedSalesman);
+  foundSalesMan.firstname = updatedSalesman.firstname;
+  foundSalesMan.lastname = updatedSalesman.lastname;
+  foundSalesMan.gids = updatedSalesman.gids;
 
   return true;
 }
