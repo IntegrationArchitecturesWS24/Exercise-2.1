@@ -6,7 +6,7 @@ export function SalesMan(sid, firstname, lastname) {
 }
 
 SalesMan.prototype.addSocialPerformanceRecord = function (record) {
-  if (record instanceof Number) {
+  if (typeof record === "number") {
     this.gids.push(record);
     return this;
   }
@@ -73,9 +73,7 @@ export function updateSalesMan(updatedSalesman) {
     return false;
   }
 
-  foundSalesMan.firstname = updatedSalesman.firstname;
-  foundSalesMan.lastname = updatedSalesman.lastname;
-  foundSalesMan.gids = updatedSalesman.gids;
+  Object.assign(foundSalesMan, updatedSalesman);
 
   return true;
 }
