@@ -54,12 +54,12 @@ export function createSalesMan(salesman) {
   if (salesManStorage.find((man) => man.sid === salesman.sid)) {
     return false;
   }
-  salesManStorage.push(SalesMan);
+  salesManStorage.push(salesman);
   return true;
 }
 
 export function readSalesMan(sid) {
-  return salesManStorage.find((SalesMan) => SalesMan.sid === sid);
+  return salesManStorage.find((salesman) => salesman.sid === sid);
 }
 
 export function readAllSalesMen() {
@@ -78,17 +78,15 @@ export function updateSalesMan(updatedSalesman) {
   return true;
 }
 
-export function deleteSalesMan(SalesMan) {
-  const foundIndex = SalesManStorage.findIndex(
-    (salesman) => salesman.sid === SalesMan.sid
-  );
+export function deleteSalesMan(salesman) {
+  const foundIndex = SalesManStorage.findIndex((s) => s.sid === salesman.sid);
 
   if (foundIndex == -1) {
     return false;
   }
 
   salesManStorage[foundIndex].gids.forEach((gid) => {
-    deleteSocialPerformanceRecord(SalesMan, readSocialPerformanceRecord(gid));
+    deleteSocialPerformanceRecord(salesman, readSocialPerformanceRecord(gid));
   });
   salesManStorage.splice(foundIndex, 1);
 
