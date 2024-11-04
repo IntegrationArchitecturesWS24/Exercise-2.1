@@ -62,9 +62,10 @@ router.put("/", async (req, res) => {
       req.body.firstname,
       req.body.lastname
     );
-    req.body.gids.forEach((gid) => {
-      updatedSalesman.addSocialPerformanceRecord(gid);
-    });
+    if(req.body.gids) {
+      req.body.gids.forEach((gid) => {
+        updatedSalesman.addSocialPerformanceRecord(gid);
+      });
 
     if (!updateSalesMan(updatedSalesman))
       return res.status(400).json({ error: "Salesman not found" });
