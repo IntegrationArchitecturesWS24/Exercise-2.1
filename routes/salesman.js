@@ -35,10 +35,8 @@ router.post("/", async (req, res) => {
 
 router.get("/:sid", async (req, res) => {
   try {
-    var sid = req.params.sid;
-
-    var result = readSalesMan(sid);
-    if (!result) return res.json({ error: "Salesman not found" }, 404);
+    var result = readSalesMan(parseInt(req.params.sid));
+    if (!result) return res.status(404).json({ error: "Salesman not found" });
 
     res.json(result);
   } catch (error) {
@@ -79,7 +77,7 @@ router.put("/", async (req, res) => {
 
 router.delete("/:sid", async (req, res) => {
   try {
-    var salesman = readSalesMan(req.params.sid);
+    var salesman = readSalesMan(parseInt(req.params.sid));
 
     if (!salesman) return res.status(404).json({ error: "Salesman not found" });
 
@@ -95,7 +93,7 @@ router.delete("/:sid", async (req, res) => {
 
 router.post("/:sid/record", async (req, res) => {
   try {
-    var salesman = readSalesMan(req.params.sid);
+    var salesman = readSalesMan(parseInt(req.params.sid));
 
     if (!salesman) return res.status(404).json({ error: "Salesman not found" });
 
@@ -118,7 +116,7 @@ router.post("/:sid/record", async (req, res) => {
 
 router.get("/:sid/record", async (req, res) => {
   try {
-    var salesman = readSalesMan(req.params.sid);
+    var salesman = readSalesMan(parseInt(req.params.sid));
     if (!salesman) return res.status(404).json({ error: "Salesman not found" });
 
     res.status(200).json(readSocialPerformanceRecords(salesman));
@@ -130,10 +128,10 @@ router.get("/:sid/record", async (req, res) => {
 
 router.delete("/:sid/record/:gid", async (req, res) => {
   try {
-    var salesman = readSalesMan(req.params.sid);
+    var salesman = readSalesMan(parseInt(req.params.sid));
     if (!salesman) return res.status(404).json({ error: "Salesman not found" });
 
-    var record = readSocialPerformanceRecord(req.params.gid);
+    var record = readSocialPerformanceRecord(parseInt(req.params.gid));
 
     if (!deleteSocialPerformanceRecord(salesman, record))
       return res.status(500).json({ error: "Failed deleting record" });
