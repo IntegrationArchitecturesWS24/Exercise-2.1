@@ -62,7 +62,7 @@ router.put("/", async (req, res) => {
       req.body.firstname,
       req.body.lastname
     );
-    if(req.body.gids) {
+    if (req.body.gids)
       req.body.gids.forEach((gid) => {
         updatedSalesman.addSocialPerformanceRecord(gid);
       });
