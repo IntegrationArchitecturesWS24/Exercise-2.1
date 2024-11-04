@@ -40,7 +40,7 @@ router.get("/:sid", async (req, res) => {
 
     res.json(result);
   } catch (error) {
-    console.error("Error with fetching data:", error);
+    console.error("Error fetching data:", error);
     res.status(500).json({ error: "Failed reading salesman" });
   }
 });
@@ -50,7 +50,7 @@ router.get("/", async (req, res) => {
     var result = readAllSalesMen();
     res.json(result);
   } catch (error) {
-    console.error("Error with fetching data:", error);
+    console.error("Error fetching data:", error);
     res.status(500).json({ error: "Failed reading all salesman" });
   }
 });
@@ -82,12 +82,12 @@ router.delete("/:sid", async (req, res) => {
     if (!salesman) return res.status(404).json({ error: "Salesman not found" });
 
     if (!deleteSalesMan(salesman))
-      return res.status(500).json({ error: "Failed deletiing salesman" });
+      return res.status(500).json({ error: "Failed deleting salesman" });
 
     res.status(202).send();
   } catch (error) {
-    console.error("Error with fetching data:", error);
-    res.status(500).json({ error: "Failed deleting SalesMan" });
+    console.error("Error fetching data:", error);
+    res.status(500).json({ error: "Failed deleting salesman" });
   }
 });
 
@@ -110,7 +110,7 @@ router.post("/:sid/record", async (req, res) => {
     res.status(201).send();
   } catch (error) {
     console.error("Error fetching data:", error);
-    res.status(500).json({ error: "Failed creating Record" });
+    res.status(500).json({ error: "Failed creating record" });
   }
 });
 
@@ -121,7 +121,7 @@ router.get("/:sid/record", async (req, res) => {
 
     res.status(200).json(readSocialPerformanceRecords(salesman));
   } catch (error) {
-    console.error("Error with fetching data:", error);
+    console.error("Error fetching data:", error);
     res.status(500).json({ error: "Failed reading records" });
   }
 });
@@ -139,7 +139,7 @@ router.delete("/:sid/record/:gid", async (req, res) => {
     res.status(202).send();
   } catch (error) {
     console.error("Error with fetching data:", error);
-    res.status(500).json({ message: "Error deleting record" });
+    res.status(500).json({ error: "Failed deleting record" });
   }
 });
 
