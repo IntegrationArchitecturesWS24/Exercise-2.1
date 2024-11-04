@@ -68,7 +68,7 @@ router.put("/", async (req, res) => {
       });
 
     if (!updateSalesMan(updatedSalesman))
-      return res.status(400).json({ error: "Salesman not found" });
+      return res.status(404).json({ error: "Salesman not found" });
     res.status(202).send();
   } catch (error) {
     console.error("Error fetching data:", error);
