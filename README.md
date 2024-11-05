@@ -365,13 +365,22 @@ Then we created a CRUD API for calculating bonuses, the Axios requests and manag
 
 ## References
 [1] https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics
+
 [2] https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions
+
 [3] https://developer.mozilla.org/en-US/docs/Glossary/Callback_function
+
 [4] https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
 [5] https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
+
 [6] https://rxjs.dev/guide/overview
+
 [7] https://expressjs.com/en/5x/api.html
+
 [8] https://en.wikipedia.org/wiki/Asynchrony_(computer_programming)
+
 [9] https://en.wikipedia.org/wiki/Parallel_computing
+
 [10] https://en.wikipedia.org/wiki/Concurrency_(computer_science)
-```
+
