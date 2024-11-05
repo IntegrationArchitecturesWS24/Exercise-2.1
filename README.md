@@ -360,7 +360,9 @@ Then we created a CRUD API for calculating bonuses, the Axios requests and manag
 
 ## Asynchrony, Parallelism, and Concurrency (or: Multithreading)
 **Asynchrony**: "Asynchrony, in computer programming, refers to the occurrence of events independent of the main program flow and ways to deal with such events. These may be "outside" events such as the arrival of signals, or actions instigated by a program that take place concurrently with program execution, without the program hanging to wait for results." [8]
+
 **Parallelism**: "Parallel computing is a type of computation in which many calculations or processes are carried out simultaneously. Large problems can often be divided into smaller ones, which can then be solved at the same time." [9]
+
 **Concurrency(OR Multithreading)**: "In computer science, concurrency is the ability of different parts or units of a program, algorithm, or problem to be executed out-of-order or in partial order, without affecting the outcome. This allows for parallel execution of the concurrent units, which can significantly improve overall speed of the execution in multi-processor and multi-core systems." [10]
 
 ## References
