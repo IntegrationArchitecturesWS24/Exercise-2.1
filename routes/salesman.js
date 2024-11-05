@@ -26,7 +26,7 @@ router.post("/", async (req, res) => {
     if (!createSalesMan(salesman))
       return res.status(400).json({ error: "Salesman already exists" });
 
-    res.status(201).send();
+    res.sendStatus(201);
   } catch (error) {
     console.error("Error fetching data:", error);
     res.status(500).json({ error: "Failed creating salesman" });
@@ -69,7 +69,7 @@ router.put("/", async (req, res) => {
 
     if (!updateSalesMan(updatedSalesman))
       return res.status(404).json({ error: "Salesman not found" });
-    res.status(202).send();
+    res.sendStatus(200);
   } catch (error) {
     console.error("Error fetching data:", error);
     res.status(500).json({ error: "Error updating salesman" });
@@ -85,7 +85,7 @@ router.delete("/:sid", async (req, res) => {
     if (!deleteSalesMan(salesman))
       return res.status(500).json({ error: "Failed deleting salesman" });
 
-    res.status(202).send();
+    res.sendStatus(200);
   } catch (error) {
     console.error("Error fetching data:", error);
     res.status(500).json({ error: "Failed deleting salesman" });
@@ -108,7 +108,7 @@ router.post("/:sid/record", async (req, res) => {
 
     if (!addSocialPerformanceRecord(salesman, record))
       return res.status(400).json({ error: "Record already exists" });
-    res.status(201).send();
+    res.sendStatus(201);
   } catch (error) {
     console.error("Error fetching data:", error);
     res.status(500).json({ error: "Failed creating record" });
@@ -120,7 +120,7 @@ router.get("/:sid/record", async (req, res) => {
     var salesman = readSalesMan(parseInt(req.params.sid));
     if (!salesman) return res.status(404).json({ error: "Salesman not found" });
 
-    res.status(200).json(readSocialPerformanceRecords(salesman));
+    res.json(readSocialPerformanceRecords(salesman));
   } catch (error) {
     console.error("Error fetching data:", error);
     res.status(500).json({ error: "Failed reading records" });
@@ -137,7 +137,7 @@ router.delete("/:sid/record/:gid", async (req, res) => {
     if (!deleteSocialPerformanceRecord(salesman, record))
       return res.status(500).json({ error: "Failed deleting record" });
 
-    res.status(202).send();
+    res.sendStatus(200);
   } catch (error) {
     console.error("Error with fetching data:", error);
     res.status(500).json({ error: "Failed deleting record" });

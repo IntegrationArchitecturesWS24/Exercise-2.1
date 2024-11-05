@@ -224,7 +224,7 @@ Then we created a CRUD API for calculating bonuses, the Axios requests and manag
     }
     ```
   - Responses:
-    - `202 Accepted`: Salesman updated successfully.
+    - `200 OK`: Salesman updated successfully.
     - `404 Not Found`: Salesman not found.
     - `500 Internal Server Error`: Error updating salesman.
 
@@ -233,7 +233,7 @@ Then we created a CRUD API for calculating bonuses, the Axios requests and manag
   - Parameters:
     - `sid`: Salesman ID (number)
   - Responses:
-    - `202 Accepted`: Salesman deleted successfully.
+    - `200 OK`: Salesman deleted successfully.
     - `404 Not Found`: Salesman not found.
     - `500 Internal Server Error`: Failed deleting salesman.
 
@@ -283,7 +283,7 @@ Then we created a CRUD API for calculating bonuses, the Axios requests and manag
     - `sid`: Salesman ID (number)
     - `gid`: Record ID (number)
   - Responses:
-    - `202 Accepted`: Record deleted successfully.
+    - `200 OK`: Record deleted successfully.
     - `404 Not Found`: Salesman not found.
     - `500 Internal Server Error`: Failed deleting record.
 
