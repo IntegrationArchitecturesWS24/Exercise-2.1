@@ -1,26 +1,25 @@
-import { Subject } from 'rxjs';
+import { Subject } from "rxjs";
 
-// 1. Create a Subject (acts as both an Observable and an Observer)
+// Create a Subject (acts as both an Observable and an Observer)
 const publisher = new Subject();
 
-// 2. Create Subscriber (ConcreteSubscriber)
+// Create subscribers
 const subscriber1 = {
-    next: (data) => console.log("Subscriber 1 received:", data),
-    complete: () => console.log("Subscriber 1 completed"),
+  next: (data) => console.log("Subscriber 1 received:", data),
+  complete: () => console.log("Subscriber 1 completed"),
 };
 
 const subscriber2 = {
-    next: (data) => console.log("Subscriber 2 received:", data),
-    complete: () => console.log("Subscriber 2 completed"),
+  next: (data) => console.log("Subscriber 2 received:", data),
+  complete: () => console.log("Subscriber 2 completed"),
 };
 
-// 3. Subscribe method
+// Subscribe to the Subject
 publisher.subscribe(subscriber1);
 publisher.subscribe(subscriber2);
 
-// Publish method
+// Publish data
 publisher.next("First dynamic update");
 publisher.next("Second dynamic update");
 
 publisher.complete();
-

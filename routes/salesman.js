@@ -11,19 +11,19 @@ import {
   readSocialPerformanceRecords,
   readSocialPerformanceRecord,
   deleteSocialPerformanceRecord,
-} from "../modules/managePersonal.js";
+} from "../util/managePersonal.js";
 
 const router = express.Router();
 
 router.post("/", async (req, res) => {
   try {
-    var actSalesMan = new SalesMan(
+    var salesman = new SalesMan(
       req.body.sid,
       req.body.firstname,
       req.body.lastname
     );
 
-    if (!createSalesMan(actSalesMan))
+    if (!createSalesMan(salesman))
       return res.status(400).json({ error: "Salesman already exists" });
 
     res.status(201).send();

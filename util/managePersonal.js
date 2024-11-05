@@ -74,7 +74,6 @@ export function updateSalesMan(updatedSalesman) {
   }
 
   Object.assign(foundSalesMan, updatedSalesman);
-
   return true;
 }
 
@@ -105,6 +104,7 @@ export function addSocialPerformanceRecord(salesman, record) {
 
   foundSalesman.addSocialPerformanceRecord(record);
   socialRecordsStorage.push(record);
+
   return true;
 }
 

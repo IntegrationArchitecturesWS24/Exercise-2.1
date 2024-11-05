@@ -1,5 +1,5 @@
 import Express from "express";
-import { Company, bonusCalculation } from "../modules/bonuscalculation.js";
+import { Company, bonusCalculation } from "../util/bonuscalculation.js";
 
 const router = Express.Router();
 
