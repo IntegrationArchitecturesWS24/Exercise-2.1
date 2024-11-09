@@ -112,7 +112,7 @@ export function readSocialPerformanceRecords(salesman) {
   let foundRecords = [];
 
   salesman.gids.forEach((record) => {
-    foundRecords.push(readSocialPerformanceRecord(record.gid));
+    foundRecords.push(readSocialPerformanceRecord(record));
   });
 
   return foundRecords;
