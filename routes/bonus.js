@@ -3,7 +3,7 @@ import { Company, bonusCalculation } from "../util/bonuscalculation.js";
 
 const router = Express.Router();
 
-router.get("/bonus", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     var company = new Company(req.body.company.name, req.body.company.rating);
     var items = req.body.items;
