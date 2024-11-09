@@ -16,14 +16,14 @@ import bonusRoutes from "./routes/bonus.js";
 import cookiesRoutes from "./routes/cookies.js";
 import salesmanRoutes from "./routes/salesman.js";
 import openCRXRoutes from "./routes/opencrx.js";
-import openHRMRoutes from "./routes/openhrm.js";
+import orangeHRMRoutes from "./routes/orangehrm.js";
 
 // Use routes
 app.use("/bonus", bonusRoutes);
 app.use("/cookies", cookiesRoutes);
 app.use("/salesman", salesmanRoutes);
 app.use("/opencrx", openCRXRoutes);
-app.use("/openhrm", openHRMRoutes);
+app.use("/orangehrm", orangeHRMRoutes);
 
 // Start server
 app.listen(port, () => {
