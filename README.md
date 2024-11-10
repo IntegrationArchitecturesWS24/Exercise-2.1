@@ -1,4 +1,4 @@
-# Exercise3
+# Exercise 2.1
 In this exercise, we will learn about JavaScript, the Observer Pattern, and the REST API. We will also discuss asynchrony, parallelism, and concurrency.
 
 ## Object Creation
