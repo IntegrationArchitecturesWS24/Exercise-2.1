@@ -1,10 +1,10 @@
 # Exercise 2.1
-In this exercise, we will learn about JavaScript, the Observer Pattern, and the REST API. We will also discuss asynchrony, parallelism, and concurrency.
+In this assignment, we will learn about JavaScript, the Observer Pattern, and the REST API. We will also discuss asynchrony, parallelism, and concurrency.
 
 ## Object Creation
 In JavaScript you create objects like this [1]:
 ``` javascript
-const Person = {
+const max = {
   name: 'Max Mustermann',
   age: 31,
   married: true
@@ -18,7 +18,7 @@ function Person(name, age, married) {
   this.married = married;
 }
 ```
-You can create an object from the prototype like this:
+And then create an object from the prototype like this:
 ``` javascript
 const max = new Person('Max Mustermann', 31, true);
 ```
@@ -289,7 +289,7 @@ Then we created a CRUD API for calculating bonuses, the Axios requests and manag
 
 ### Bonus Routes
 
-- **GET /bonus/bonus**
+- **GET /bonus/**
   - Description: Calculate bonus for a company.
   - Request Body:
     ```json
