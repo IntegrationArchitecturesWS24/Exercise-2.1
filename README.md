@@ -332,15 +332,15 @@ Then we created a CRUD API for calculating bonuses, the Axios requests and manag
   - Responses:
     - `200 OK`: Cookie deleted successfully.
 
-### OpenHRM Routes
+### OrangeHRM Routes
 
-- **GET /openhrm/**
-  - Description: Fetch data from OpenHRM.
+- **GET /orangehrm/**
+  - Description: Fetch data from OrangeHRM.
   - Responses:
     - `200 OK`: Returns the fetched data.
       ```json
       {
-        // OpenHRM data structure
+        // OrangeHRM data structure
       }
       ```
     - `500 Internal Server Error`: Error fetching data.
