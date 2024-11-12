@@ -162,7 +162,6 @@ We see that the function `example` is called before the promise is resolved. The
 # RxJS
 - `Observable`: represents the idea of an invokable collection of future values or events.
 - `Observer`: is a collection of callbacks that knows how to listen to values delivered by the Observable.
-- `Subscription`: represents the execution of an Observable, is primarily useful for cancelling the execution.
 - `Subject`: is equivalent to an EventEmitter, and the only way of multicasting a value or event to multiple Observers.
 
 ---
