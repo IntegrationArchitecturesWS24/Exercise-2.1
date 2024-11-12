@@ -78,7 +78,7 @@ export function updateSalesMan(updatedSalesman) {
 }
 
 export function deleteSalesMan(salesman) {
-  const foundIndex = SalesManStorage.findIndex((s) => s.sid === salesman.sid);
+  const foundIndex = salesManStorage.findIndex((s) => s.sid === salesman.sid);
 
   if (foundIndex == -1) {
     return false;
